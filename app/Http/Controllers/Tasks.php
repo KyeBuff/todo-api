@@ -44,7 +44,7 @@ class Tasks extends Controller
 
 		public function complete(Task $task)
 		{
-	    $task->complete = 1;
+	    $task->complete = true;
 
 	    $task->save();
 	    // return the article along with a 201 status code
