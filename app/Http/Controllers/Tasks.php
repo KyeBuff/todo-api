@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Task;
+use App\Http\Requests\TaskRequest;
 
 class Tasks extends Controller
 {
-    public function create(Request $request)
+    public function create(TaskRequest $request)
 		{
 				 // get post request data for title and article
 	    $data = $request->only(["task", "priority"]);
@@ -24,7 +24,7 @@ class Tasks extends Controller
 	    return Task::all();
 		}
 
-		public function update(Request $request, Task $task)
+		public function update(TaskRequest $request, Task $task)
 		{
 				 // get post request data for title and article
 	    $data = $request->only(["task", "priority"]);
