@@ -13,6 +13,7 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
+        //Create a table with the following columns and requirements
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');            
             $table->string('task', 255);

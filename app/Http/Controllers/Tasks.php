@@ -9,7 +9,7 @@ class Tasks extends Controller
 {
     public function create(TaskRequest $request)
 		{
-				 // get post request data for title and article
+		  // get post request data for title and article
 	    $data = $request->only(["task", "priority"]);
 	    // create article with data and store in DB
 	    $task = Task::create($data);
@@ -26,7 +26,7 @@ class Tasks extends Controller
 
 		public function update(TaskRequest $request, Task $task)
 		{
-				 // get post request data for title and article
+			// get post request data for title and article
 	    $data = $request->only(["task", "priority"]);
 	    // create article with data and store in DB
 	    $task->fill($data)->save();
@@ -44,11 +44,13 @@ class Tasks extends Controller
 
 		public function complete(Task $task)
 		{
+			//Set complete prop of task to true
 	    $task->complete = true;
 
+	    //Use model to save task in table
 	    $task->save();
 	    // return the article along with a 201 status code
-	    return response($task, 201);
+	    return $task;
 
 		}
 }
