@@ -14,13 +14,15 @@ class CreateTasksTable extends Migration
     public function up()
     {
         //Create a table with the following columns and requirements
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');            
-            $table->string('task', 255);
-            $table->boolean('complete')->default(false);
-            $table->integer('priority')->nullable();
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('tasks')){
+            Schema::create('tasks', function (Blueprint $table) {
+                $table->increments('id');            
+                $table->string('task', 255);
+                $table->boolean('complete')->default(false);
+                $table->integer('priority')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
