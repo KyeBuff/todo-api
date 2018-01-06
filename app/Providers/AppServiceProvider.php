@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
-    if ($this->app->environment() == 'production') {
-        URL::forceScheme('https');
-    }
     /**
      * Bootstrap any application services.
      *
@@ -18,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        if ($this->app->environment() == 'production') {
+            URL::forceScheme('https');
+        }
+
         Schema::defaultStringLength(191);
     }
 
